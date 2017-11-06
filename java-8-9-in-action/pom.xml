@@ -13,4 +13,14 @@
 
     <name>Exercises from Java 8 &amp; 9 in Action (Lambdas, streams, functional and reactive programming)</name>
 
+    <dependencies>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>
