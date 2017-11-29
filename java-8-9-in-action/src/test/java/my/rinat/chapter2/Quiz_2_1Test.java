@@ -29,12 +29,12 @@ public class Quiz_2_1Test {
     @Test
     public void shouldFormatWithWeightFormatter() {
         Quiz_2_1.prettyPrintApple(inventory, new AppleWeightFormatter());
-        Assert.assertEquals(output.toString(), "Apple[weight = 200]\r\nApple[weight = 100]\r\n");
+        Assert.assertEquals("Apple[weight = 200]\r\nApple[weight = 100]\r\n", output.toString());
     }
 
     @Test
     public void shouldFormatWithHeavinessFormatter() {
         Quiz_2_1.prettyPrintApple(inventory, new AppleHeavinessFormatter());
-        Assert.assertEquals(output.toString(), "Apple[heaviness = heavy]\r\nApple[heaviness = light]\r\n");
+        Assert.assertEquals("Apple[heaviness = heavy]\r\nApple[heaviness = light]\r\n", output.toString());
     }
 }
