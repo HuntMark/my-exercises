@@ -11,13 +11,13 @@ public class Dish {
     }
 
     private final String name;
-    private final boolean vegeterian;
+    private final boolean vegetarian;
     private final int calories;
     private final Type type;
 
-    private Dish(String name, boolean vegeterian, int calories, Type type) {
+    private Dish(String name, boolean vegetarian, int calories, Type type) {
         this.name = name;
-        this.vegeterian = vegeterian;
+        this.vegetarian = vegetarian;
         this.calories = calories;
         this.type = type;
     }
@@ -26,8 +26,8 @@ public class Dish {
         return name;
     }
 
-    public boolean isVegeterian() {
-        return vegeterian;
+    public boolean isVegetarian() {
+        return vegetarian;
     }
 
     public int getCalories() {
