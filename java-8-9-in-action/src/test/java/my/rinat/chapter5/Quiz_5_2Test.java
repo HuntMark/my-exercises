@@ -35,4 +35,20 @@ public class Quiz_5_2Test {
         System.out.println(Arrays.deepToString(actualPairs));
         Assert.assertArrayEquals(expectedPairs, actualPairs);
     }
+
+    @Test
+    public void shouldReturnNumberPairsDivisibleByThreeArray() {
+        // Given
+        Long[] numbers1 = {1L, 2L, 3L};
+        Long[] numbers2 = {3L, 4L};
+        Long[][] expectedPairsDivisibleByThree = {{2L, 4L}, {3L, 3L}};
+
+        // When
+        Long[][] actualPairsDivisibleByThree = Quiz_5_2.numberPairsDivisibleByThree(numbers1, numbers2);
+
+        // Then
+        System.out.println(Arrays.deepToString(expectedPairsDivisibleByThree));
+        System.out.println(Arrays.deepToString(actualPairsDivisibleByThree));
+        Assert.assertArrayEquals(expectedPairsDivisibleByThree, actualPairsDivisibleByThree);
+    }
 }
