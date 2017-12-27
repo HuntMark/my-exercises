@@ -16,4 +16,12 @@ class Quiz_5_2 {
                         .map(number2 -> new Long[]{number1, number2}))
                 .toArray(Long[][]::new);
     }
+
+    static Long[][] numberPairsDivisibleByThree(Long[] numbers1, Long[] numbers2) {
+        return Arrays.stream(numbers1)
+                .flatMap(number1 -> Arrays.stream(numbers2)
+                        .filter(number2 -> (number1 + number2) % 3 == 0)
+                        .map(number2 -> new Long[]{number1, number2}))
+                .toArray(Long[][]::new);
+    }
 }
