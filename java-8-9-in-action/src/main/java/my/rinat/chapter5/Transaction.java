@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Transaction {
 
-    public static List<Transaction> transactions = Arrays.asList(
+    static List<Transaction> transactions = Arrays.asList(
             new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
             new Transaction(raoul, 2011, 400),
@@ -23,7 +23,7 @@ public class Transaction {
     private final int year;
     private final int value;
 
-    public Transaction(Trader trader, int year, int value) {
+    private Transaction(Trader trader, int year, int value) {
         this.trader = trader;
         this.year = year;
         this.value = value;
@@ -43,10 +43,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                "trader=" + trader +
-                ", year=" + year +
-                ", value=" + value +
-                '}';
+        return "{" + this.trader + ", " + "year: " + this.year + ", " + "value:" + this.value + "}";
     }
 }

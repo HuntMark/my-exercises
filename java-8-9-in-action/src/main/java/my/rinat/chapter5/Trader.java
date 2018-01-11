@@ -2,15 +2,15 @@ package my.rinat.chapter5;
 
 public class Trader {
 
-    public static Trader raoul = new Trader("Raoul", "Cambridge");
-    public static Trader mario = new Trader("Mario", "Milan");
-    public static Trader alan = new Trader("Alan", "Cambridge");
-    public static Trader brian = new Trader("Brian", "Cambridge");
+    static Trader raoul = new Trader("Raoul", "Cambridge");
+    static Trader mario = new Trader("Mario", "Milan");
+    static Trader alan = new Trader("Alan", "Cambridge");
+    static Trader brian = new Trader("Brian", "Cambridge");
 
     private final String name;
     private final String city;
 
-    public Trader(String name, String city) {
+    private Trader(String name, String city) {
         this.name = name;
         this.city = city;
     }
@@ -25,9 +25,6 @@ public class Trader {
 
     @Override
     public String toString() {
-        return "Trader{" +
-                "name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+        return "Trader:" + this.name + " in " + this.city;
     }
 }
