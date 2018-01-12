@@ -16,6 +16,16 @@ public class TradersAndTransactions {
         printExercise2();
         printMessageSeparator("Exercise 3");
         printExercise3();
+        printMessageSeparator("Exercise 4");
+        printExercise4();
+        printMessageSeparator("Exercise 5");
+        printExercise5();
+        printMessageSeparator("Exercise 6");
+        printExercise6();
+        printMessageSeparator("Exercise 7");
+        printExercise7();
+        printMessageSeparator("Exercise 8");
+        printExercise8();
     }
 
     private static void printExercise1() {
@@ -42,6 +52,44 @@ public class TradersAndTransactions {
                 .sorted()
                 .collect(Collectors.toList())
                 .forEach(Printer::print);
+    }
+
+    private static void printExercise4() {
+        String result = transactions.stream()
+                .map(transaction -> transaction.getTrader().getName())
+                .distinct()
+                .sorted()
+                .reduce("", String::concat);
+        Printer.print(result);
+    }
+
+    private static void printExercise5() {
+        final String city = "Milan";
+        boolean areAnyTradersBasedInMilan = transactions.stream()
+                .anyMatch(transaction -> city.equalsIgnoreCase(transaction.getTrader().getCity()));
+        Printer.print("Are any traders based in " + city + "? " + (areAnyTradersBasedInMilan ? "Yes" : "No"));
+    }
+
+    private static void printExercise6() {
+        transactions.stream()
+                .filter(transaction -> "Cambridge".equals(transaction.getTrader().getCity()))
+                .map(Transaction::getValue)
+                .collect(Collectors.toList())
+                .forEach(Printer::print);
+    }
+
+    private static void printExercise7() {
+        transactions.stream()
+                .map(Transaction::getValue)
+                .max(Comparator.naturalOrder())
+                .ifPresent(Printer::print);
+    }
+
+    private static void printExercise8() {
+        transactions.stream()
+                .map(Transaction::getValue)
+                .min(Comparator.naturalOrder())
+                .ifPresent(Printer::print);
     }
 
     private static void printMessageSeparator(String message) {
