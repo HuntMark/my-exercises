@@ -32,7 +32,6 @@ public class TradersAndTransactions {
         transactions.stream()
                 .filter(transaction -> transaction.getYear() == 2011)
                 .sorted(Comparator.comparingInt(Transaction::getValue))
-                .collect(Collectors.toList())
                 .forEach(Printer::print);
     }
 
@@ -40,17 +39,16 @@ public class TradersAndTransactions {
         transactions.stream()
                 .map(transaction -> transaction.getTrader().getCity())
                 .distinct()
-                .collect(Collectors.toList())
                 .forEach(Printer::print);
     }
 
     private static void printExercise3() {
         transactions.stream()
-                .filter(transaction -> "Cambridge".equals(transaction.getTrader().getCity()))
-                .map(transaction -> transaction.getTrader().getName())
+                .map(Transaction::getTrader)
+                .filter(trader -> "Cambridge".equals(trader.getCity()))
                 .distinct()
-                .sorted()
-                .collect(Collectors.toList())
+                .sorted(Comparator.comparing(Trader::getName))
+                .map(Trader::getName)
                 .forEach(Printer::print);
     }
 
@@ -59,7 +57,7 @@ public class TradersAndTransactions {
                 .map(transaction -> transaction.getTrader().getName())
                 .distinct()
                 .sorted()
-                .reduce("", String::concat);
+                .collect(Collectors.joining());
         Printer.print(result);
     }
 
@@ -74,7 +72,6 @@ public class TradersAndTransactions {
         transactions.stream()
                 .filter(transaction -> "Cambridge".equals(transaction.getTrader().getCity()))
                 .map(Transaction::getValue)
-                .collect(Collectors.toList())
                 .forEach(Printer::print);
     }
 
