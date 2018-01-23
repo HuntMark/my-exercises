@@ -9,6 +9,7 @@
     <version>0.0.1</version>
     <modules>
         <module>java-8-9-in-action</module>
+        <module>stepik-java-functional-programming</module>
     </modules>
     <packaging>pom</packaging>
 
