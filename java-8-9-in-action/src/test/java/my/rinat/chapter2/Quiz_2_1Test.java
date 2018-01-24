@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
@@ -18,12 +20,13 @@ public class Quiz_2_1Test {
 
     @Before
     public void setUp() {
+        // TODO: 23.01.2018 don't use setOut due to SecurityException
         System.setOut(new PrintStream(output));
     }
 
     @After
     public void tearDown() {
-        System.setOut(null);
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
     }
 
     @Test
