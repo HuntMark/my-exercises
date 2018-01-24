@@ -26,6 +26,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
@@ -33,6 +34,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- System Rules is a collection of JUnit rules for testing code which uses java.lang.System -->
+            <dependency>
+                <groupId>com.github.stefanbirkner</groupId>
+                <artifactId>system-rules</artifactId>
+                <version>1.17.1</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
