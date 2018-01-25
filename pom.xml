@@ -10,8 +10,18 @@
     <modules>
         <module>java-8-9-in-action</module>
         <module>stepik-java-functional-programming</module>
+        <module>learning-spring-security</module>
     </modules>
     <packaging>pom</packaging>
+
+    <developers>
+        <developer>
+            <email>rinat.zalyaletdinov@yandex.com</email>
+            <name>Rinat Zalyaletdinov</name>
+            <url>https://github.com/HuntMark</url>
+            <id>MarkHunt</id>
+        </developer>
+    </developers>
 
     <name>My Exercises</name>
 
