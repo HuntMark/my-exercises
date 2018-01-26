@@ -11,7 +11,7 @@ import org.springframework.core.convert.converter.Converter;
 
 @SpringBootApplication
 @ComponentScan("com.baeldung.lss.web")
-public class LssApp1 {
+public class LssApp {
 
     @Bean
     public UserRepository userRepository() {
@@ -20,16 +20,11 @@ public class LssApp1 {
 
     @Bean
     public Converter<String, User> messageConverter() {
-        return new Converter<String, User>() {
-            @Override
-            public User convert(String id) {
-                return userRepository().findUser(Long.valueOf(id));
-            }
-        };
+        return id -> userRepository().findUser(Long.valueOf(id));
     }
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(LssApp1.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(new Class[] {LssApp.class, LssSecurityConfig.class}, args);
     }
 
 }
