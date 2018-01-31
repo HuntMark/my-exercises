@@ -19,10 +19,15 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http
-			.authorizeRequests()
+
+            .authorizeRequests()
                 .antMatchers("/delete/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
-				.and()
-			.formLogin();
+
+            .and()
+
+            .formLogin()
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/doLogin");
     } // @formatter:on
 }
