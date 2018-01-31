@@ -30,9 +30,9 @@
             <role-name>Member</role-name>
         </auth-constraint>
 
-        <user-data-constraint>
+        <!--<user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
+        </user-data-constraint>-->
 
     </security-constraint>
 
@@ -49,7 +49,11 @@
     </security-role>
 
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/loginForm.html</form-login-page>
+            <form-error-page>/errorLogin.html</form-error-page>
+        </form-login-config>
     </login-config>
 
 </web-app>
