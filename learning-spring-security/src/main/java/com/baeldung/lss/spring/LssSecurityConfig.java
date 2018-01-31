@@ -17,23 +17,31 @@ public class LssSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception { // @formatter:off 
-        auth.
-            inMemoryAuthentication().
-            withUser("user").password("pass").
-            roles("USER");
+        auth
+            .inMemoryAuthentication()
+            .withUser("user").password("pass").roles("USER");
     } // @formatter:on
 
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http
         .authorizeRequests()
-                .anyRequest().authenticated()
+            .antMatchers("/**/delete/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
         
         .and()
-        .formLogin().
-            loginPage("/login").permitAll().
-            loginProcessingUrl("/doLogin")
-        ;
-    }
+
+        .formLogin()
+             .loginPage("/login").permitAll()
+             .loginProcessingUrl("/doLogin")
+
+        .and()
+
+        .logout().permitAll().logoutUrl("/doLogout")
+
+        .and()
+
+        .csrf().disable();
+    } // @formatter:on
 
 }
