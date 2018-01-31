@@ -1,10 +1,13 @@
 package com.baeldung.lss.web.controller;
 
 import com.baeldung.lss.persistence.UserRepository;
+import com.baeldung.lss.service.IUserService;
+import com.baeldung.lss.validation.EmailExistsException;
 import com.baeldung.lss.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +19,13 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
-
-    private final UserRepository userRepository;
+class UserController {
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
+
+    @Autowired
+    private IUserService userService;
 
     //
 
@@ -39,30 +41,35 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView create(@Valid User user, BindingResult result, RedirectAttributes redirect) {
+    public ModelAndView create(@Valid final User user, final BindingResult result, final RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return new ModelAndView("tl/form", "formErrors", result.getAllErrors());
         }
-        user = this.userRepository.save(user);
+        try {
+            userService.registerNewUser(user);
+        } catch (EmailExistsException e) {
+            result.addError(new FieldError("user", "email", e.getMessage()));
+            return new ModelAndView("tl/form", "user", user);
+        }
         redirect.addFlashAttribute("globalMessage", "Successfully created a new user");
         return new ModelAndView("redirect:/user/{user.id}", "user.id", user.getId());
     }
 
     @RequestMapping(value = "delete/{id}")
-    public ModelAndView delete(@PathVariable("id") Long id) {
-        this.userRepository.deleteUser(id);
-        return new ModelAndView("redirect:/user/");
+    public ModelAndView delete(@PathVariable("id") final Long id) {
+        this.userRepository.delete(id);
+        return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "modify/{id}", method = RequestMethod.GET)
-    public ModelAndView modifyForm(@PathVariable("id") User user) {
+    public ModelAndView modifyForm(@PathVariable("id") final User user) {
         return new ModelAndView("tl/form", "user", user);
     }
 
     // the form
 
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String createForm(@ModelAttribute User user) {
+    public String createForm(@ModelAttribute final User user) {
         return "tl/form";
     }
 
