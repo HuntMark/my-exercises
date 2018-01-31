@@ -8,9 +8,14 @@ public class PathController {
 
     //
 
-    @RequestMapping("/login")
-    public String list() {
-        return "loginPage";
+    // @RequestMapping("/login")
+    // public String list() {
+    // return "loginPage";
+    // }
+
+    @RequestMapping("/")
+    public String home() {
+        return "redirect:/user";
     }
 
 }
