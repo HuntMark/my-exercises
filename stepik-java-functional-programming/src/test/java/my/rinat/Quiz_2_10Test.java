@@ -3,7 +3,7 @@ package my.rinat;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Quiz_2_10 {
+public class Quiz_2_10Test {
 
     @Test
     public void test1() {
