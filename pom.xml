@@ -12,6 +12,7 @@
         <module>stepik-java-functional-programming</module>
         <module>learning-spring-security</module>
         <module>servlets-and-jsps-web</module>
+        <module>java-se</module>
     </modules>
     <packaging>pom</packaging>
 
