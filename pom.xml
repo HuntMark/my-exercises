@@ -13,6 +13,7 @@
         <module>learning-spring-security</module>
         <module>servlets-and-jsps-web</module>
         <module>java-se</module>
+        <module>effective-java</module>
     </modules>
     <packaging>pom</packaging>
 
