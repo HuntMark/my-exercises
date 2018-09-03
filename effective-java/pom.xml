@@ -11,7 +11,7 @@
 
     <artifactId>effective-java</artifactId>
 
-    <name>Java SE examples</name>
+    <name>Effective Java Examples</name>
 
     <dependencies>
 
