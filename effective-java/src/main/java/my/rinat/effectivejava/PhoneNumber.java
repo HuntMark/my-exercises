@@ -1,6 +1,6 @@
 package my.rinat.effectivejava;
 
-class PhoneNumber {
+class PhoneNumber implements Comparable<PhoneNumber> {
 
     private final short areaCode;
     private final short prefix;
@@ -36,6 +36,18 @@ class PhoneNumber {
             result = 31 * result + Short.hashCode(prefix);
             result = 31 * result + Short.hashCode(lineNum);
             hashCode = result;
+        }
+        return result;
+    }
+
+    @Override
+    public int compareTo(PhoneNumber that) {
+        int result = Short.compare(this.areaCode, that.areaCode);
+        if (result == 0) {
+            result = Short.compare(this.prefix, that.prefix);
+            if (result == 0) {
+                result = Short.compare(this.lineNum, that.lineNum);
+            }
         }
         return result;
     }
