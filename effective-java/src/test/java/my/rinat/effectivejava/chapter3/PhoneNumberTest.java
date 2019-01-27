@@ -1,5 +1,6 @@
-package my.rinat.effectivejava;
+package my.rinat.effectivejava.chapter3;
 
+import my.rinat.effectivejava.chapter3.PhoneNumber;
 import org.junit.Assert;
 import org.junit.Test;
 

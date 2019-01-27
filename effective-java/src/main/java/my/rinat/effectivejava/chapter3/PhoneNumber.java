@@ -1,4 +1,4 @@
-package my.rinat.effectivejava;
+package my.rinat.effectivejava.chapter3;
 
 class PhoneNumber implements Comparable<PhoneNumber> {
 
